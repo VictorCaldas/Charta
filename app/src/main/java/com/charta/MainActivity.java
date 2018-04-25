@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Charta meuMapa = new Charta(R.layout.activity_main,R.id.map);
-        meuMapa.getMap();
+        setContentView(R.layout.activity_main);
+        Charta meuMapa = new Charta(R.layout.activity_main,R.id.map,this);
     }
 }
