@@ -1,7 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
-group='com.github.jitpack'
+group = 'com.github.jitpack'
+
+def groupId = 'com.github.victorcaldas'
+def artifactId = 'charta'
 
 android {
     compileSdkVersion 27
@@ -10,10 +14,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
-        versionName "0.0.2"
-
+        versionName "0.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -23,6 +25,9 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
 }
 
 // build a jar with source files
@@ -47,6 +52,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            setGroupId(groupId)
+            setArtifactId(artifactId)
+            version android.defaultConfig.versionName
+
+            artifact(bundleRelease)
+        }
+    }
 }
 
 
