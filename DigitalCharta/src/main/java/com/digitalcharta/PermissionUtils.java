@@ -32,7 +32,6 @@ public abstract class PermissionUtils {
     }
 
 
-
     /**
      * Checks if the result contains a {@link PackageManager#PERMISSION_GRANTED} result for a
      * permission from a runtime permissions request.

@@ -14,9 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-public class Charta extends FragmentActivity implements GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener,
-        OnMapReadyCallback {
+public class Charta extends FragmentActivity implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener, OnMapReadyCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1 ;
     private GoogleMap mMap;
@@ -29,8 +27,6 @@ public class Charta extends FragmentActivity implements GoogleMap.OnMyLocationBu
         this.mIdLayoutMap = idLayoutMap;
         this.mIdMap = idMap;
         this.mActivity = activity;
-
-        enableMyLocation();
     }
 
     @Override
@@ -71,9 +67,7 @@ public class Charta extends FragmentActivity implements GoogleMap.OnMyLocationBu
         return false;
     }
 
-
-
-    public void enableMyLocation() {
+    private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Permission to access the location is missing.
             PermissionUtils.requestPermission(mActivity, LOCATION_PERMISSION_REQUEST_CODE, Manifest.permission.ACCESS_FINE_LOCATION, true);
@@ -90,15 +84,13 @@ public class Charta extends FragmentActivity implements GoogleMap.OnMyLocationBu
             case LOCATION_PERMISSION_REQUEST_CODE: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this,"PERMISSION_OK",Toast.LENGTH_SHORT).show();
                     enableMyLocation();
                 } else {
                     Toast.makeText(this,"PERMISSION_DENIED",Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
         }
     }
 }
