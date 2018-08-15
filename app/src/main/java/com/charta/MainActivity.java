@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //pablo lindo
         Charta meuMapa = new Charta(R.layout.activity_main,R.id.map,this);
     }
 }
